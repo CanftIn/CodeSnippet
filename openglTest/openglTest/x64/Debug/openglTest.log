@@ -1,0 +1,10 @@
+﻿openglTest.obj : error LNK2019: unresolved external symbol glutInit referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutInitDisplayMode referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutInitWindowPosition referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutInitWindowSize referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutMainLoop referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutCreateWindow referenced in function main
+openglTest.obj : error LNK2019: unresolved external symbol glutDisplayFunc referenced in function main
+F:\Program_Lib\glut\glut.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+F:\Program_Lib\glut\glut32.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+F:\2018\TEST\openglTest\x64\Debug\openglTest.exe : fatal error LNK1120: 7 unresolved externals
