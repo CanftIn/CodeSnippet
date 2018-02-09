@@ -24,5 +24,14 @@
     <ClCompile Include="lazyinstantiationcase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="computetypecase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="primecase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="controlstructcase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -33,8 +33,9 @@ class aTMP<0> {
 public:
 	enum { ret = 1 };
 };
-
+#if 0
 int main() {
 	std::cout << aTMP<10>::ret << '\n';
 	std::cin.get(); return 0;
 }
+#endif

@@ -143,7 +143,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bignumcase.cpp" />
+    <ClCompile Include="computetypecase.cpp" />
+    <ClCompile Include="controlstructcase.cpp" />
     <ClCompile Include="lazyinstantiationcase.cpp" />
+    <ClCompile Include="primecase.cpp" />
     <ClCompile Include="sametypecase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
