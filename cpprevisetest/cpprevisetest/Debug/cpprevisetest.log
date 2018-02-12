@@ -1,3 +1,16 @@
-﻿  controlstructcase.cpp
+﻿clang-cl.exe : warning : argument unused during compilation: '/ZI' [-Wunused-command-line-argument]
+clang-cl.exe : warning : argument unused during compilation: '/Gm' [-Wunused-command-line-argument]
+controlstructcase.cpp(66,11): warning : using the result of an assignment as a condition without parentheses [-Wparentheses]
+          while (r = a%b) { a = b; b = r; } // <U+56E0><U+4E3A><U+7528><U+53EF><U+53D8><U+7684><U+5B58><U+50A8><U+FF0C><U+4E0D><U+80FD><U+5199><U+6210> a=b; b=a%b;
+                 ~~^~~~~
+  controlstructcase.cpp(66,11):  note: place parentheses around the assignment to silence this warning
+          while (r = a%b) { a = b; b = r; } // <U+56E0><U+4E3A><U+7528><U+53EF><U+53D8><U+7684><U+5B58><U+50A8><U+FF0C><U+4E0D><U+80FD><U+5199><U+6210> a=b; b=a%b;
+                   ^
+                 (      )
+  controlstructcase.cpp(66,11):  note: use '==' to turn this assignment into an equality comparison
+          while (r = a%b) { a = b; b = r; } // <U+56E0><U+4E3A><U+7528><U+53EF><U+53D8><U+7684><U+5B58><U+50A8><U+FF0C><U+4E0D><U+80FD><U+5199><U+6210> a=b; b=a%b;
+                   ^
+                   ==
+  1 warning generated.
   cpprevisetest.vcxproj -> F:\2018\TEST\cpprevisetest\Debug\cpprevisetest.exe
   cpprevisetest.vcxproj -> F:\2018\TEST\cpprevisetest\Debug\cpprevisetest.pdb (Full PDB)

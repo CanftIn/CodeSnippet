@@ -89,8 +89,7 @@ class lcm_T_r {
 public:
 	static const int ret = a * b / gcd<a, b>::ret;
 };
-
-#if 0
+//#if 0
 int main() {
 	std::cout << lcm(100, 36) << '\n';
 	std::cout << lcm_r(100, 36) << '\n';
@@ -98,4 +97,4 @@ int main() {
 	std::cout << lcm_T_r<100, 36>::ret << '\n';
 	std::cin.get(); return 0;
 }
-#endif
+//#endif
