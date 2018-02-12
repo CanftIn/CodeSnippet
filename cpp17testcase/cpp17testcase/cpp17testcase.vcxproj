@@ -116,9 +116,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="fold_expressions.cpp" />
+    <ClCompile Include="if_constexpr.cpp" />
     <ClCompile Include="inline_variable.cpp" />
     <ClCompile Include="list_switch_initializer.cpp" />
     <ClCompile Include="structured_binding_case.cpp" />
+    <ClCompile Include="template_class_type_deduction.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
