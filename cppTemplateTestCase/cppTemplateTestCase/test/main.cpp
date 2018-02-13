@@ -2,8 +2,10 @@
 
 void basic_test()
 {
-	TEST(max1)();
-	TEST(max2)();
+	//TEST(max1)();
+	//TEST(max2)();
+	//TEST(max3)();
+	TEST(ref)();
 }
 
 int main()

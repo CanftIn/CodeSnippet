@@ -1,3 +1,2 @@
 ﻿  main.cpp
-e:\2018\test\cpptemplatetestcase\cpptemplatetestcase\basic\max.h(41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   cppTemplateTestCase.vcxproj -> E:\2018\TEST\cppTemplateTestCase\Debug\cppTemplateTestCase.exe
