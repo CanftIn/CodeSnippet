@@ -1,0 +1,6 @@
+[package]
+name = "reduce"
+version = "0.1.0"
+authors = ["CanftIn <wwc7033@gmail.com>"]
+
+[dependencies]
