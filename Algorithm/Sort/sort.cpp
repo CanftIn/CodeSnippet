@@ -77,6 +77,27 @@ void InsertSort(int arr[], int n)
     }
 }
 
+void myInsert(int arr[], int n)
+{
+    for(int i = 1; i < n; ++i)
+    {
+        int temp = arr[i];
+        int j = i - 1;
+        while(j >= 0)
+        {
+            if(arr[j] > temp)
+            {
+                arr[j + 1] = arr[j];
+            }
+            else
+                break;
+            --j;
+        }
+        j += 1;
+        arr[j] = temp;
+    }
+}
+
 // Shell Sort
 // Merge Sort
 // Quick Sort
@@ -90,7 +111,7 @@ int main()
 {
     int arr[10] = { 5,6,1,3,4,2,8,7,9,0};
     //cout << sizeof(arr) / sizeof(int) << endl;
-    SelectSort(arr, 10);
+    myInsert(arr, 10);
     for(int i = 0; i < 10; i++)
     {
         cout << arr[i] << " ";
