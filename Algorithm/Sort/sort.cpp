@@ -101,6 +101,39 @@ void myInsert(int arr[], int n)
 // Shell Sort
 // Merge Sort
 // Quick Sort
+// not finish!!!
+void quickSort(int arr[], int left, int right)
+{
+    int i = left;
+    int j = right;
+    int temp = arr[left];
+
+    if(left > right)
+        return ;
+    /*
+    // 小数组时候插入排序效率高于快排
+    if(left + 10 > right)
+    {
+        myInsert(arr, right - left + 1);
+        return ;
+    }
+    */
+    while(i < j)
+    {
+        while(arr[j] >= temp)
+            --j;
+        while(arr[i] <= temp)
+            ++i;
+        if(i < j)
+            exchange(arr[i], arr[j]);
+    }
+    arr[left] = arr[i];
+    arr[i] = temp;
+
+    quickSort(arr, left, i-1);
+    quickSort(arr, i+1, right);
+}
+
 // Heap Sort
 // Counting Sort
 // Bucket Sort
@@ -111,7 +144,9 @@ int main()
 {
     int arr[10] = { 5,6,1,3,4,2,8,7,9,0};
     //cout << sizeof(arr) / sizeof(int) << endl;
-    myInsert(arr, 10);
+    //myInsert(arr, 10);
+
+    quickSort(arr, 0, 10);
     for(int i = 0; i < 10; i++)
     {
         cout << arr[i] << " ";
