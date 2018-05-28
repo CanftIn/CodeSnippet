@@ -73,13 +73,68 @@ void inOrderTraverse(Node* root)
 	}
 }
 
-void lastOrderTraverse(Node* root)
+void inOrderNoRecursive(Node* root)
+{
+	stack<Node *> s;
+	Node *p = root;
+	while(p || !s.empty())
+	{
+		while(p)
+		{
+			s.push(p);
+			p = p->Left;
+		}
+		if(!s.empty())
+		{
+			p = s.top();
+			cout << p->data << " ";
+			s.pop();
+			p = p->Right;
+		}
+	}
+}
+
+void postOrderTraverse(Node* root)
 {
 	if (root)
 	{
-		lastOrderTraverse(root->Left);
-		lastOrderTraverse(root->Right);
+		postOrderTraverse(root->Left);
+		postOrderTraverse(root->Right);
 		cout << root->data << ' ';
+	}
+}
+
+// Recursive 
+void postOrderNoRecursive(Node* root)
+{
+	int flag[20];
+	stack<Node *> s;
+	Node *p = root;
+	while(p)
+	{
+		s.push(p);
+		flag[s.size()] = 0;
+		p = p->Left;
+	}
+	while(!s.empty())
+	{
+		p = s.top();
+		while(p->Right && flag[s.size()] == 0)
+		{
+			flag[s.size()] = 1; // mark the node which has right child node. when stack finish
+								// right list node and get back to this node, stack will pop due
+								// to that the mark label is 1;
+			p = p->Right;
+			while(p)
+			{
+				s.push(p);
+				flag[s.size()] = 0;
+				p = p->Left;
+			}
+		}
+		p = s.top();
+		cout << p->data << " ";
+		s.pop();
 	}
 }
 
@@ -151,9 +206,38 @@ int main()
 	inOrderTraverse(root);
 	cout << endl;
 
-	cout << "last order: " << endl;
-	lastOrderTraverse(root);
+	cout << "in order: " << endl;
+	inOrderNoRecursive(root);
 	cout << endl;
 
+
+	cout << "last order: " << endl;
+	postOrderTraverse(root);
+	cout << endl;
+
+	cout << "last order: " << endl;
+	postOrderNoRecursive(root);
+	cout << endl;
 	return 0;
 }
+
+/*
+PS E:\2018\TEST\Algorithm\BinaryTree> .\BinaryTree.exe
+	1 2 4 0 0 5 0 0 3 6 0 0 7 0 0
+	build success
+	Node Number  7
+	depth 3
+	leaf number4
+	pre order:
+	1 2 4 5 3 6 7
+	pre order:
+	1 2 4 5 3 6 7
+	in order:
+	4 2 5 1 6 3 7
+	in order:
+	4 2 5 1 6 3 7
+	last order:
+	4 5 2 6 7 3 1
+	last order:
+	4
+*/
