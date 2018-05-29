@@ -104,7 +104,7 @@ void postOrderTraverse(Node* root)
 	}
 }
 
-// Recursive 
+// Recursive With error --- not finish
 void postOrderNoRecursive(Node* root)
 {
 	int flag[20];
@@ -136,6 +136,11 @@ void postOrderNoRecursive(Node* root)
 		cout << p->data << " ";
 		s.pop();
 	}
+}
+
+void postOrderNoRecur(Node *root)
+{
+	
 }
 
 int Nodenum(Node* root)
