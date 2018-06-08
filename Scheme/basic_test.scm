@@ -1,0 +1,31 @@
+(define a #\a)
+(define A #\A)
+(define b #\b)
+(define B #\B)
+(define space #\space)
+(define Line #\newline)
+
+(begin
+    (display a)
+    (newline)
+    (display A)
+    (newline)
+    (display b)
+    (newline)
+    (display space)
+    (newline)
+    (display Line)
+    (newline)
+    (display '(1 2 3 "string"))
+    (newline)
+    (display #(1 2 #\x 5))
+    (newline)
+    (display #t)
+    (newline))
+
+(begin 
+        (display (quote (+ 2 3)))
+        (newline))
+
+(display (< 1 2 3))
+(newline)
