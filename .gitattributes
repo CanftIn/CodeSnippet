@@ -34,4 +34,4 @@
 *.py linguist-language=python
 *.rs linguist-language=rust
 *.scm linguist-language=Scheme
-*.html linguist-language=Html
+*.html linguist-language=Other
