@@ -12,7 +12,8 @@ LIBS = \
 	-lboost_system -lboost_filesystem
 
 OBJS = \
-	$(TMPDIR)/filesystem_test.o
+	$(TMPDIR)/filesystem_test.o \
+	$(TMPDIR)/file_io.o
 
 TMPDIR = ./tmp
 SRCDIR = $(CODEDIR)
