@@ -27,4 +27,23 @@ struct func {
       do_something(i);
     }
   }
+};
+
+void do_something_in_current_thread()
+{}
+
+
+void f()
+{
+    int some_local_state;
+    func my_func(some_local_state);
+    std::thread t(my_func);
+    thread_guard g(t);
+        
+    do_something_in_current_thread();
+}
+
+int main()
+{
+    f();
 }
