@@ -19,7 +19,7 @@ def default_options():
 
 # 定义DAG
 def test1(dag):
-    t = "echo 'hallo world'"
+    t = "echo 'hello world'"
     # operator 支持多种类型， 这里使用 BashOperator
     task = BashOperator(
         task_id='test1',  # task_id
