@@ -1,7 +1,0 @@
-﻿  Ref_ptr_test.cpp
-e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\refptr.h(147): error C2683: 'dynamic_cast': 'B' is not a polymorphic type
-  e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\ref_ptr_test.cpp(11): note: see declaration of 'B'
-  e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\refptr.h(138): note: see reference to function template instantiation 'CAN::RefPtr<C,CAN::RefPtrDefaultDestructor> &CAN::RefPtr<C,CAN::RefPtrDefaultDestructor>::operator =<B>(const CAN::RefPtr<B,CAN::RefPtrDefaultDestructor> &)' being compiled
-  e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\refptr.h(138): note: see reference to function template instantiation 'CAN::RefPtr<C,CAN::RefPtrDefaultDestructor> &CAN::RefPtr<C,CAN::RefPtrDefaultDestructor>::operator =<B>(const CAN::RefPtr<B,CAN::RefPtrDefaultDestructor> &)' being compiled
-  e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\ref_ptr_test.cpp(20): note: see reference to function template instantiation 'CAN::RefPtr<C,CAN::RefPtrDefaultDestructor>::RefPtr<B>(const CAN::RefPtr<B,CAN::RefPtrDefaultDestructor> &)' being compiled
-  e:\2018\test\cpp\ref_ptr_test\ref_ptr_test\ref_ptr_test.cpp(20): note: see reference to function template instantiation 'CAN::RefPtr<C,CAN::RefPtrDefaultDestructor>::RefPtr<B>(const CAN::RefPtr<B,CAN::RefPtrDefaultDestructor> &)' being compiled
