@@ -1,7 +1,0 @@
-﻿  template_class_type_deduction.cpp
-  structured_binding_case.cpp
-  list_switch_initializer.cpp
-  inline_variable.cpp
-  if_constexpr.cpp
-  Generating Code...
-  cpp17testcase.vcxproj -> E:\2018\TEST\cpp17testcase\Debug\cpp17testcase.exe

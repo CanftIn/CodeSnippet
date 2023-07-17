@@ -1,4 +1,0 @@
-```
-$ cargo build
-$ cargo run
-```
