@@ -1,0 +1,19 @@
+grammar;
+
+// LR left to right, 高优先级的尽可能在右侧，优先 eval 右侧
+pub ExprPrecedence1 = {
+    <lhs:ExprPrecedence1> "+" <rhs:ExprPrecedence2> => lhs + rhs,
+    <lhs:ExprPrecedence1> "-" <rhs:ExprPrecedence2> => lhs - rhs,
+    ExprPrecedence2
+}
+
+// 乘除立即算
+ExprPrecedence2 = {
+    <lhs:ExprPrecedence2> "*" <rhs:Term> => lhs * rhs,
+    <lhs:ExprPrecedence2> "/" <rhs:Term> => lhs / rhs,
+    Term
+}
+
+Term = { Num, "(" <ExprPrecedence1> ")" }
+
+Num: i32 = r"[0-9]+" => <>.parse().unwrap();
