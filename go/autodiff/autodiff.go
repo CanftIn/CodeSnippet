@@ -130,7 +130,3 @@ func (t *Tensor) Add(t2 *Tensor) *Tensor {
 	t3.FromTensors = []*Tensor{t, t2}
 	return t3
 }
-
-func (t *Tensor) backward(grad float64) {
-	if grad == 
-}
