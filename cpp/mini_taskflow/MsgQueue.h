@@ -1,35 +1,39 @@
-#ifndef MSG_QUEUE_H
-#define MSG_QUEUE_H
+#ifndef MINI_TASKFLOW_MSGQUEUE_H
+#define MINI_TASKFLOW_MSGQUEUE_H
 
-#include <queue>
-#include <mutex>
 #include <condition_variable>
+#include <mutex>
+#include <queue>
 
-namespace Sun {
-	class Task;
+namespace mini_taskflow {
 
-	enum class TaskState {
-		FINISH = 0,
-	};
-	struct Msg {
-		Task* task = nullptr;
-		TaskState taskState = TaskState::FINISH;
-	};
+class Task;
 
-	class MsgQueue {
-	public:
-		void push(const Msg& task);
-		Msg pop();
-		Msg front();
-		bool empty();
-		void wait();
-		void stop_wait();
-	private:
-		std::condition_variable condition_;
-		std::mutex mtx_;
-		std::queue<Msg> queue_;
-		bool stop_ = false;
-	};
-}
+enum class TaskState : uint8_t {
+  Finish = 0,
+};
 
-#endif 
+struct Msg {
+  Task* task = nullptr;
+  TaskState task_state = TaskState::Finish;
+};
+
+class MsgQueue {
+ public:
+  void push(const Msg& msg);
+  Msg pop();
+  Msg front();
+  bool empty();
+  void wait();
+  void stopWait();
+
+ private:
+  std::condition_variable condition_;
+  std::mutex mtx_;
+  std::queue<Msg> queue_;
+  bool stop_ = false;
+};
+
+}  // namespace mini_taskflow
+
+#endif  // MINI_TASKFLOW_MSGQUEUE_H
