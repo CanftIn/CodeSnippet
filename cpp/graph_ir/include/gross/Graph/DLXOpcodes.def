@@ -1,0 +1,133 @@
+#ifdef DLX_COMMON
+// Arithmetic always need special handle
+#define DLX_MEM_OP(OC)  DLX_COMMON(OC)
+#define DLX_CTRL_OP(OC) DLX_COMMON(OC)
+#define DLX_BUILTIN(OC) DLX_COMMON(OC)
+#endif
+
+#ifndef VIRT_OP
+#define VIRT_OP(OC)
+#endif
+
+VIRT_OP(DLXOps)         // All the OC starts with DLX
+
+/// Arithmetic Operations
+#ifndef DLX_ARITH_OP
+#define DLX_ARITH_OP(OC)
+#endif
+DLX_ARITH_OP(Add)
+DLX_ARITH_OP(Sub)
+DLX_ARITH_OP(Mul)
+DLX_ARITH_OP(Div)
+DLX_ARITH_OP(Mod)
+DLX_ARITH_OP(Cmp)
+DLX_ARITH_OP(BitOR)
+DLX_ARITH_OP(BitAND)
+DLX_ARITH_OP(BitXOR)
+DLX_ARITH_OP(BitBIC)
+DLX_ARITH_OP(Lsh)
+DLX_ARITH_OP(Ash)
+//DLX_ARITH_OP(Chk)
+#undef DLX_ARITH_OP
+VIRT_OP(DLXBinOps)      // All DLX arithmetic operations with binary operands
+
+/// Memory Operations
+#ifndef DLX_MEM_OP
+#define DLX_MEM_OP(OC)
+#endif
+DLX_MEM_OP(LdW)
+DLX_MEM_OP(LdX)
+DLX_MEM_OP(StW)
+DLX_MEM_OP(StX)
+DLX_MEM_OP(Push)
+DLX_MEM_OP(Pop)
+#undef DLX_MEM_OP
+
+/// Control Operations
+#ifndef DLX_CTRL_OP
+#define DLX_CTRL_OP(OC)
+#endif
+DLX_CTRL_OP(Beq)
+DLX_CTRL_OP(Bne)
+DLX_CTRL_OP(Ble)
+DLX_CTRL_OP(Blt)
+DLX_CTRL_OP(Bge)
+DLX_CTRL_OP(Bgt)
+// BSR
+DLX_CTRL_OP(Blr)
+// JSR
+DLX_CTRL_OP(Jlr)
+DLX_CTRL_OP(Ret)
+#undef DLX_CTRL_OP
+// all the DLX control ops
+VIRT_OP(DLXTerminate)
+
+/// Constant Nodes
+#ifndef DLX_CONST
+#define DLX_CONST(OC)
+#endif
+DLX_CONST(Offset)
+/// Registers
+#ifndef DLX_REG
+#define DLX_REG(OC) DLX_CONST(OC)
+#endif
+DLX_REG(r0)
+DLX_REG(r1)
+DLX_REG(r2)
+DLX_REG(r3)
+DLX_REG(r4)
+DLX_REG(r5)
+DLX_REG(r6)
+DLX_REG(r7)
+DLX_REG(r8)
+DLX_REG(r9)
+DLX_REG(r10)
+DLX_REG(r11)
+DLX_REG(r12)
+DLX_REG(r13)
+DLX_REG(r14)
+DLX_REG(r15)
+DLX_REG(r16)
+DLX_REG(r17)
+DLX_REG(r18)
+DLX_REG(r19)
+DLX_REG(r20)
+DLX_REG(r21)
+DLX_REG(r22)
+DLX_REG(r23)
+DLX_REG(r24)
+DLX_REG(r25)
+DLX_REG(r26)
+DLX_REG(r27)
+DLX_REG(r28)
+DLX_REG(r29)
+DLX_REG(r30)
+DLX_REG(r31)
+#undef DLX_REG
+#undef DLX_CONST
+VIRT_OP(DLXRegisters)
+
+/// Procedure call related
+// callsite markers
+VIRT_OP(DLXCallsiteBegin)
+VIRT_OP(DLXCallsiteEnd)
+// parameter passing marker
+VIRT_OP(DLXPassParam)
+
+/// Builtins
+#ifndef DLX_BUILTIN
+#define DLX_BUILTIN(OC)
+#endif
+DLX_BUILTIN(Rdd)
+DLX_BUILTIN(Wrd)
+DLX_BUILTIN(Wrh)
+DLX_BUILTIN(Wrl)
+#undef DLX_BUILTIN
+
+VIRT_OP(DLXTriOps)
+
+#undef VIRT_OP
+
+#ifdef DLX_COMMON
+#undef DLX_COMMON
+#endif
