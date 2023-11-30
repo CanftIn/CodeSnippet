@@ -3,3 +3,4 @@ build
 .cache
 build_cmake
 compile_commands.json
+__pycache__
