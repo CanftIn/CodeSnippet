@@ -38,9 +38,9 @@ def test_toy():
   tok = Tokenizer(tokengen)
   p = ToyParser(tok)
   tree = p.statement()
-  assert tree and tree.type == "sub"
-  assert tree.children[0].type == NAME
-  assert tree.children[1].type == "add"
+  assert tree and tree.type == "statement"
+  assert tree.children[0].type == "expr"
+  assert tree.children[0].children[0].type == "term"
 
 test_basic()
 test_toy()

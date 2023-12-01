@@ -1,84 +1,163 @@
-from token import NAME, NUMBER
+# This is @generated code; do not edit!
 
-from parser import Parser
+from token import NAME, NUMBER, STRING, NEWLINE, ENDMARKER
+
+from memoize import memoize
 from node import Node
+from parser import Parser
 
-# statement: assignment | expr | if_statement
-# atom: NAME | NUMBER | '(' expr ')'
-# assignment: target '=' expr
-# target: NAME
-# if_statement: 'if' expr ':' statement
-# expr: term ('+' term | '-' term)*
-# term: atom ('*' atom | '/' atom)*
 class ToyParser(Parser):
-  def statement(self):
-    if a := self.assignment():
-      return a
-    if e := self.expr():
-      return e
-    if i := self.if_statement():
-      return i
-    return None
-  
-  def expr(self):
-    if t := self.term():
-      pos = self.mark()
-      if op := self.expect("+"):
-        if e := self.expr():
-          return Node("add", [t, e])
-        self.reset(pos)
-      if op := self.expect("-"):
-        if e := self.expr():
-          return Node("sub", [t, e])
-      self.reset(pos)
-      return t
-    return None
 
-  def term(self):
-    if t := self.atom():
-      pos = self.mark()
-      if op := self.expect("*"):
-        if e := self.term():
-          return Node("mul", [t, e])
-      self.reset(pos)
-      if op := self.expect("/"):
-        if e := self.term():
-          return Node("div", [t, e])
-      self.reset(pos)
-      return t
-    return None
-
-  def atom(self):
-    if token := self.expect(NAME):
-      return token
-    if token := self.expect(NUMBER):
-      return token
+  @memoize
+  def start(self):
     pos = self.mark()
-    if self.expect("("):
-      if e := self.expr():
-        if self.expect(")"):
-          return e
+    if (True
+        and (statements := self.statements())
+        and (endmarker := self.expect(ENDMARKER))
+    ):
+      return Node('start', [statements, endmarker])
     self.reset(pos)
     return None
 
+  @memoize
+  def statements(self):
+    pos = self.mark()
+    if (True
+        and (statement := self.statement())
+        and (newline := self.expect(NEWLINE))
+        and (statements := self.statements())
+    ):
+      return Node('statements', [statement, newline, statements])
+    self.reset(pos)
+    if (True
+        and (statement := self.statement())
+        and (newline := self.expect(NEWLINE))
+    ):
+      return Node('statements', [statement, newline])
+    self.reset(pos)
+    return None
+
+  @memoize
+  def statement(self):
+    pos = self.mark()
+    if (True
+        and (if_statement := self.if_statement())
+    ):
+      return Node('statement', [if_statement])
+    self.reset(pos)
+    if (True
+        and (assignment := self.assignment())
+    ):
+      return Node('statement', [assignment])
+    self.reset(pos)
+    if (True
+        and (expr := self.expr())
+    ):
+      return Node('statement', [expr])
+    self.reset(pos)
+    return None
+
+  @memoize
+  def expr(self):
+    pos = self.mark()
+    if (True
+        and (term := self.term())
+        and self.expect('+')
+        and (expr := self.expr())
+    ):
+      return Node('expr', [term, expr])
+    self.reset(pos)
+    if (True
+        and (term := self.term())
+        and self.expect('-')
+        and (term1 := self.term())
+    ):
+      return Node('expr', [term, term1])
+    self.reset(pos)
+    if (True
+        and (term := self.term())
+    ):
+      return Node('expr', [term])
+    self.reset(pos)
+    return None
+
+  @memoize
+  def term(self):
+    pos = self.mark()
+    if (True
+        and (atom := self.atom())
+        and self.expect('*')
+        and (term := self.term())
+    ):
+      return Node('term', [atom, term])
+    self.reset(pos)
+    if (True
+        and (atom := self.atom())
+        and self.expect('/')
+        and (atom1 := self.atom())
+    ):
+      return Node('term', [atom, atom1])
+    self.reset(pos)
+    if (True
+        and (atom := self.atom())
+    ):
+      return Node('term', [atom])
+    self.reset(pos)
+    return None
+
+  @memoize
+  def atom(self):
+    pos = self.mark()
+    if (True
+        and (name := self.expect(NAME))
+    ):
+      return Node('atom', [name])
+    self.reset(pos)
+    if (True
+        and (number := self.expect(NUMBER))
+    ):
+      return Node('atom', [number])
+    self.reset(pos)
+    if (True
+        and self.expect('(')
+        and (expr := self.expr())
+        and self.expect(')')
+    ):
+      return Node('atom', [expr])
+    self.reset(pos)
+    return None
+
+  @memoize
   def assignment(self):
     pos = self.mark()
-    if ((t := self.target()) and
-        self.expect("=") and
-        (e := self.expr())):
-      return Node("assign", [t, e])
+    if (True
+        and (target := self.target())
+        and self.expect('=')
+        and (expr := self.expr())
+    ):
+      return Node('assignment', [target, expr])
     self.reset(pos)
     return None
 
+  @memoize
   def target(self):
-    return self.expect(NAME)
+    pos = self.mark()
+    if (True
+        and (name := self.expect(NAME))
+    ):
+      return Node('target', [name])
+    self.reset(pos)
+    return None
 
+  @memoize
   def if_statement(self):
     pos = self.mark()
-    if (self.expect("if") and
-        (e := self.expr()) and
-        self.expect(":") and
-        (s := self.statement())):
-      return Node("if", [e, s])
+    if (True
+        and self.expect('if')
+        and (expr := self.expr())
+        and self.expect(':')
+        and (statement := self.statement())
+    ):
+      return Node('if_statement', [expr, statement])
     self.reset(pos)
     return None
