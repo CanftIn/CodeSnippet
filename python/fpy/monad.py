@@ -25,7 +25,3 @@ class SimpleMonad(_Monad):
 
   def __bind__(self, b):
     return b(self.val)
-
-monad = SimpleMonad(10)
-result = monad >> (lambda x: SimpleMonad(x * 2))
-print(result.val)  # 20
